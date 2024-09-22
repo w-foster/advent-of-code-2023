@@ -4,7 +4,7 @@ import json
 
 # Puts the URL into a string variable and passes that into the get() function from the requests object
 # Puts the result of that into 'response'
-url = "https://ctxt.io/2/AAC4CPsSFg"
+url = "https://ctxt.io/2/AAC4nJJvFg"
 response = requests.get(url)
 
 # Uses the BS webscraper; the text attribute contains the html --> this is passed to the BS constructor
@@ -17,13 +17,14 @@ text_content = soup.get_text()
 # Splits the lines up into a list of lines
 lines = text_content.splitlines()
 
-cleaned_lines = [line for line in lines if 'Game ' not in line]
+cleaned_lines = [line for line in lines if 'Game ' in line]
 lines_final = [line for line in cleaned_lines if len(line)>0]
 
 print(lines_final)
 
 
-with open('day1_lines_v2.json', 'w') as json_file:
+with open('day2_lines.json', 'w') as json_file:
     json.dump(lines_final, json_file, indent=4)
+
 
     
